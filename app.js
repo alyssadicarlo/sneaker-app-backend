@@ -30,7 +30,13 @@ app.get('/', function(req, res) {
 });
 
 app.get('/popular', (req, res) => {
-    sneaks.getMostPopular(10, (err, products) => {
+    sneaks.getMostPopular(16, (err, products) => {
         res.json(products);
+    })
+});
+
+app.get('/product/:id', (req, res) => {
+    sneaks.getProductPrices(req.params.id, function(err, product){
+        res.json(product);
     })
 })
